@@ -2,7 +2,8 @@
 
 import Modal from 'react-modal';
 
-Modal.setAppElement('#root'); // Встановіть root-елемент для модального вікна
+
+Modal.setAppElement('#root');
 
 function ImageModal({ imageUrl, onClose }) {
     return (
