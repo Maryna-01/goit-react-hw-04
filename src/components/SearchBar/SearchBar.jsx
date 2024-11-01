@@ -1,5 +1,9 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 import styles from './SearchBar.module.css';
 
 function SearchBar({ onSubmit }) {
@@ -12,7 +16,7 @@ function SearchBar({ onSubmit }) {
     const handleSubmit = (event) => {
         event.preventDefault();
         if (inputValue.trim() === '') {
-            alert('Please enter a search term.');
+            toast.error('Please enter a search term.');
             return;
         }
         onSubmit(inputValue);
@@ -29,6 +33,7 @@ function SearchBar({ onSubmit }) {
                 className={styles.searchInput}
             />
             <button type="submit" className={styles.searchButton}>Search</button>
+            <ToastContainer position="top-right" autoClose={3000} />
         </form>
     );
 }
