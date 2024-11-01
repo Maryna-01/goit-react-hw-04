@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import SearchBar from './components/SearchBar/SearchBar';
 import ImageGallery from './components/ImageGallery/ImageGallery';
@@ -7,6 +7,7 @@ import ErrorMessage from './components/ErrorMessage/ErrorMessage';
 import LoadMoreBtn from './components/LoadMoreBtn/LoadMoreBtn';
 import ImageModal from './components/ImageModal/ImageModal';
 import toast from 'react-hot-toast';
+import './App.css';
 
 const UNSPLASH_API_KEY = '4qQheWHsHKHeYvDAj-BNWvya435vNCcSFFKJVL0xnT8';
 const UNSPLASH_API_URL = 'https://api.unsplash.com/search/photos';
@@ -33,10 +34,9 @@ function App() {
       });
       setImages(prevImages => pageNum === 1 ? response.data.results : [...prevImages, ...response.data.results]);
     } catch (err) {
-      console.error('Error loading images:', err); // Додає виведення помилки
+      console.error('Error:', err);
       setError('Failed to load images. Please try again.');
-    }
-    finally {
+    } finally {
       setLoading(false);
     }
   };
@@ -66,9 +66,8 @@ function App() {
     }
   }, [query, page]);
 
-
   return (
-    <div>
+    <div className="App">
       <SearchBar onSubmit={handleSearchSubmit} />
       {error && <ErrorMessage message={error} />}
       <ImageGallery images={images} onImageClick={openModal} />
@@ -80,4 +79,5 @@ function App() {
 }
 
 export default App;
+
 

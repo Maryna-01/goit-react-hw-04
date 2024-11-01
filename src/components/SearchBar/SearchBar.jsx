@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
-import './SearchBar.module.css';
+import styles from './SearchBar.module.css';
 
 function SearchBar({ onSubmit }) {
     const [inputValue, setInputValue] = useState('');
@@ -20,15 +20,15 @@ function SearchBar({ onSubmit }) {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="search-form">
+        <form onSubmit={handleSubmit} className={styles.searchForm}>
             <input
                 type="text"
                 value={inputValue}
                 onChange={handleInputChange}
                 placeholder="Search for images..."
-                className="search-input"
+                className={styles.searchInput}
             />
-            <button type="submit" className="search-button">Search</button>
+            <button type="submit" className={styles.searchButton}>Search</button>
         </form>
     );
 }
@@ -38,4 +38,5 @@ SearchBar.propTypes = {
 };
 
 export default SearchBar;
+
 

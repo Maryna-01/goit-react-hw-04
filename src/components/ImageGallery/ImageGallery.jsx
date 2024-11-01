@@ -1,12 +1,11 @@
-// src/components/ImageGallery/ImageGallery.jsx
-
 import ImageCard from '../ImageCard/ImageCard';
+import styles from './ImageGallery.module.css';
 
 function ImageGallery({ images, onImageClick }) {
     return (
-        <ul>
+        <ul className={styles.gallery}>
             {images.map(image => (
-                <li key={image.id}>
+                <li key={image.id} className={styles.galleryItem}>
                     <ImageCard image={image} onClick={() => onImageClick(image)} />
                 </li>
             ))}
@@ -15,3 +14,4 @@ function ImageGallery({ images, onImageClick }) {
 }
 
 export default ImageGallery;
+

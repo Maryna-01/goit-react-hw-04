@@ -1,18 +1,23 @@
-// src/components/ImageModal/ImageModal.jsx
-
 import Modal from 'react-modal';
-
+import styles from './ImageModal.module.css';
 
 Modal.setAppElement('#root');
 
 function ImageModal({ imageUrl, onClose }) {
     return (
-        <Modal isOpen={!!imageUrl} onRequestClose={onClose}>
-            <div onClick={onClose} style={{ cursor: 'pointer', backgroundColor: 'rgba(0,0,0,0.8)', padding: '20px' }}>
-                <img src={imageUrl} alt="Large view" style={{ width: '100%', height: 'auto' }} />
+        <Modal
+            isOpen={!!imageUrl}
+            onRequestClose={onClose}
+            className={styles.modalContent}
+            overlayClassName={styles.modalOverlay}
+        >
+            <div onClick={onClose}>
+                <img src={imageUrl} alt="Large view" className={styles.modalImage} />
             </div>
         </Modal>
     );
 }
 
 export default ImageModal;
+
+

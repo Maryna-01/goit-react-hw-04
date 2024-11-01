@@ -1,8 +1,12 @@
-// src/components/ErrorMessage/ErrorMessage.jsx
-
+import styles from './ErrorMessage.module.css';
 
 function ErrorMessage({ message }) {
-    return <p>{message}</p>;
+    if (!message) {
+        return null;
+    }
+
+    return <p className={styles.error}>{message}</p>;
 }
 
 export default ErrorMessage;
+
